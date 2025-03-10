@@ -1,0 +1,48 @@
+﻿body {
+    background-color: hsl(247 0% 98%);
+}
+
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.blogWrapper {
+    min-height: 500px;
+    display: flex;
+}
+
+.Aside {
+    flex-grow: 1;
+    position: sticky;
+    top: 5%;
+    height: 50vh;
+    background-color: white;
+    box-shadow: black 5px 5px 5px;
+}
+
+.contentWrapper {
+    width: 75%;
+    margin-inline-start: 15%;
+}
+
+.Blog {
+    justify-self: end;
+    margin-block: 5%;
+    padding: 5%;
+    border-radius: 10px;
+    box-shadow: black 5px 5px 5px;
+    margin-inline: 1%;
+    width: 100%;
+    text-align: justify;
+    border-right: hsl(241 100% 45%) solid 15px;
+    background-color: white;
+}
+
+.blogTitle {
+    text-align: center;
+}
+
+.blogContent {
+
+}
