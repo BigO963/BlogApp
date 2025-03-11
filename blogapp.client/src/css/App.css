@@ -1,5 +1,7 @@
 ﻿body {
     background-color: hsl(247 0% 98%);
+    --bg-button-blue: hsl(241 100% 45%);
+    --bg-button-hover: hsl(241 100% 55%);
 }
 
 #root {
@@ -35,14 +37,125 @@
     margin-inline: 1%;
     width: 100%;
     text-align: justify;
-    border-right: hsl(241 100% 45%) solid 15px;
+    border-right: var(--bg-button-blue) solid 15px;
     background-color: white;
+    position:relative;
+}
+
+.moreSettings {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    margin: 2%;
+}
+
+.optionsDialog {
+    position: absolute;
+    min-width: 100px;
+    top: 50px;
+    right: 0;
+    border: solid black;
+}
+
+.editBlog, .deleteBlog {
+    width: 100%;
+    font-size: 2rem;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.editBlog:hover, .deleteBlog:hover {
+    background-color: var(--bg-button-hover);
+    color: white;
+}
+
+.moreSettings:hover {
+    cursor: pointer;
 }
 
 .blogTitle {
     text-align: center;
 }
 
-.blogContent {
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; 
+}
 
+.addDialog {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 45%;
+    text-align: center;
+    height: 75%;
+    position: relative;
+}
+
+.add {
+    height: 50px;
+    width: 200px;
+    margin-block: 5%;
+    position: sticky;
+    top: 5%;
+    font-weight: bold;
+    color: white;
+    background-color: var(--bg-button-blue);
+    font-size: 2rem;
+}
+
+.add:hover, .addButton:hover, .closeButton:hover{
+    cursor: pointer;
+    background-color: var(--bg-button-hover);
+}
+
+.dialog-wrapper {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.dialogTitle, .dialogText {
+    margin: 5%;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.dialogText {
+    text-align: start;
+    height: 70%;
+    resize: none;
+}
+
+.addButton {
+    height: 50px;
+    width: 200px;
+    font-weight: bold;
+    color: white;
+    background-color: var(--bg-button-blue);
+    font-size: 2rem;
+}
+
+.closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2%;
+    font-weight: bold;
+    font-size: 2rem;
+    color: white;
+    background-color: var(--bg-button-blue);
 }

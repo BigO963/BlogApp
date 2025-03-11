@@ -12,34 +12,23 @@ namespace BlogApp.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BlogsController : ControllerBase
+    public class Blogs1Controller : ControllerBase
     {
         private readonly BlogDbContext _context;
 
-        public BlogsController(BlogDbContext context)
+        public Blogs1Controller(BlogDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Blogs
+        // GET: api/Blogs1
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Blog>>> GetBlogs()
         {
-            return await _context.Blogs.ToArrayAsync();
+            return await _context.Blogs.ToListAsync();
         }
 
-        // POST: api/Blogs
-        [HttpPost]
-        public async Task<ActionResult<Blog>> PostBlog(Blog blog)
-        {
-            _context.Blogs.Add(blog);
-            await _context.SaveChangesAsync();
-
-            /*return CreatedAtAction("GetBlog", new { id = blog.Id }, blog);*/
-            return CreatedAtAction(nameof(GetBlog), new { id = blog.Id }, blog);
-        }
-
-        // GET: api/Blogs/5
+        // GET: api/Blogs1/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Blog>> GetBlog(int id)
         {
@@ -53,23 +42,8 @@ namespace BlogApp.Server.Controllers
             return blog;
         }
 
-        // DELETE: api/Blogs/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBlog(int id)
-        {
-            var blog = await _context.Blogs.FindAsync(id);
-            if (blog == null)
-            {
-                return NotFound();
-            }
-
-            _context.Blogs.Remove(blog);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        // PUT: api/Blogs/5
+        // PUT: api/Blogs1/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBlog(int id, Blog blog)
         {
@@ -99,10 +73,36 @@ namespace BlogApp.Server.Controllers
             return NoContent();
         }
 
+        // POST: api/Blogs1
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Blog>> PostBlog(Blog blog)
+        {
+            _context.Blogs.Add(blog);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetBlog", new { id = blog.Id }, blog);
+        }
+
+        // DELETE: api/Blogs1/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBlog(int id)
+        {
+            var blog = await _context.Blogs.FindAsync(id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+
+            _context.Blogs.Remove(blog);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         private bool BlogExists(int id)
         {
             return _context.Blogs.Any(e => e.Id == id);
         }
-
     }
 }
