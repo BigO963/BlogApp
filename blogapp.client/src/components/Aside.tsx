@@ -1,10 +1,10 @@
-function Aside() {
+interface ButtonProps {
+    openDialog: () => void;
+}
+function Aside({openDialog } : ButtonProps) {
     return (
-        <div className="Aside">
-            //TODO: add DELETE button and style the whole component
-            <button>Add</button>
-        </div>
-      );
+        <button className="add" onClick={openDialog}>Add Blog</button>
+    );  
 }
 
 export default Aside;
